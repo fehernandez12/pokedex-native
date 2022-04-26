@@ -46,19 +46,26 @@ const styles = StyleSheet.create({
   },
   spacing: {
     flex: 1,
-    padding: 5,
+    padding: 10,
   },
   bgStyles: {
     flex: 1,
     borderRadius: 3,
-    padding: 10,
+    paddingHorizontal: 10,
   },
   image: {
     position: "absolute",
-    bottom: 2,
-    right: 2,
-    width: 90,
-    height: 90,
+    bottom: -15,
+    right: 12,
+    width: 100,
+    height: 100,
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 4,
+    },
+    shadowOpacity: 0.75,
+    shadowRadius: 3.84,
   },
   name: {
     color: "#fff",

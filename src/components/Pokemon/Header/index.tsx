@@ -44,15 +44,22 @@ const styles = StyleSheet.create({
     top: 30,
   },
   image: {
-    width: 250,
-    height: 250,
+    width: 275,
+    height: 275,
     resizeMode: "contain",
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 5,
+    },
+    shadowOpacity: 0.85,
+    shadowRadius: 7.84,
   },
   header: {
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
-    paddingTop: 40,
+    paddingTop: 20,
   },
   name: {
     color: "#f1f2f3",

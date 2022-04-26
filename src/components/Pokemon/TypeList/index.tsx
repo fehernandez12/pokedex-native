@@ -40,8 +40,6 @@ const styles = StyleSheet.create({
     padding: 5,
     borderRadius: 5,
     overflow: "hidden",
-    borderColor: "black",
-    borderWidth: 1,
     color: "#f1f2f3",
   },
 });
