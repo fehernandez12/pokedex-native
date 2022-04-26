@@ -10,9 +10,7 @@ function AccountNavigation() {
       <Stack.Screen
         name="AccountNav"
         component={Account}
-        options={{
-          title: "Mi cuenta",
-        }}
+        options={{ title: "", headerTransparent: true }}
       />
     </Stack.Navigator>
   );

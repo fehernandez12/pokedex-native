@@ -1,3 +1,5 @@
+import { StyleSheet } from "react-native";
+
 export const API_HOST: string = "https://pokeapi.co/api/v2";
 
 export const POKEMON_TYPE_COLORS = {
@@ -33,3 +35,14 @@ export const POKEMON_STATS: StatsMap = {
   'special-defense': "Sp. Defense",
   'speed': "Speed",
 }
+
+export const textStyles = StyleSheet.create({
+  text: {
+    fontFamily: "Nunito_400Regular",
+  },
+  textBold: {
+    fontFamily: "Nunito_700Bold",
+  },
+});
+
+export const FAVORITE_STORAGE = "favorites";

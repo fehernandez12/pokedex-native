@@ -1,13 +1,13 @@
 import {
   StyleSheet,
   View,
-  Text,
   Image,
   TouchableWithoutFeedback,
 } from "react-native";
 import React from "react";
 import { useNavigation } from "@react-navigation/native";
 import { getColorByType } from "../utils/getColorByType";
+import { AppText } from "./AppText";
 
 function PokemonCard(props: any) {
   const { pokemon } = props;
@@ -27,10 +27,10 @@ function PokemonCard(props: any) {
       <View style={styles.card}>
         <View style={styles.spacing}>
           <View style={bgStyles}>
-            <Text style={styles.name}>{pokemon.name}</Text>
-            <Text style={styles.number}>
+            <AppText style={styles.name}>{pokemon.name}</AppText>
+            <AppText style={styles.number}>
               #{`${pokemon.id}`.padStart(3, "0")}
-            </Text>
+            </AppText>
             <Image source={{ uri: pokemon.image }} style={styles.image} />
           </View>
         </View>

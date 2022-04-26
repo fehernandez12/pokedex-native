@@ -1,19 +1,17 @@
-import {
-  View,
-  Text,
-  StyleSheet,
-  TextInput,
-  Button,
-  Keyboard,
-} from "react-native";
+import { View, StyleSheet, TextInput } from "react-native";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import React, { useState } from "react";
-
+import useAuth from "../../../hooks/useAuth";
 import { user, userDetails } from "../../../utils/userDB";
+import { AppText } from "../../AppText";
+import { AppButton } from "../../AppButton";
+import { AppTextInput } from "../../AppTextInput";
 
 function LoginForm() {
   const [error, setError] = useState("");
+
+  const { login } = useAuth();
 
   const formik = useFormik({
     initialValues: initialValues(),
@@ -26,38 +24,39 @@ function LoginForm() {
         setError(
           "¡Cuidado, el nombre de usuario o el password son incorrectos!"
         );
+      } else {
+        login(userDetails);
       }
     },
   });
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Iniciar sesión</Text>
-      <TextInput
+      <AppText style={styles.title}>Iniciar sesión</AppText>
+      <AppTextInput
         placeholder="Nombre de usuario"
         style={styles.input}
         autoCapitalize="none"
         value={formik.values.username}
-        onChangeText={(text) => formik.setFieldValue("username", text)}
+        onChangeText={(text: string) => formik.setFieldValue("username", text)}
       />
-      <TextInput
+      <AppTextInput
         placeholder="Password"
         style={styles.input}
         autoCapitalize="none"
         secureTextEntry={true}
         value={formik.values.password}
-        onChangeText={(text) => formik.setFieldValue("password", text)}
+        onChangeText={(text: string) => formik.setFieldValue("password", text)}
       />
-      <View style={styles.buttonContainer}>
-        <Button
-          title="Iniciar sesión"
-          onPress={() => formik.handleSubmit()}
-          color="#fff"
-        />
-      </View>
-      <Text style={styles.errorMessages}>{formik.errors.username}</Text>
-      <Text style={styles.errorMessages}>{formik.errors.password}</Text>
-      <Text style={styles.errorMessages}>{error}</Text>
+      <AppButton
+        onPress={() => formik.handleSubmit()}
+        style={styles.buttonContainer}
+      >
+        <AppText style={styles.buttonText}>Iniciar sesión</AppText>
+      </AppButton>
+      <AppText style={styles.errorMessages}>{formik.errors.username}</AppText>
+      <AppText style={styles.errorMessages}>{formik.errors.password}</AppText>
+      <AppText style={styles.errorMessages}>{error}</AppText>
     </View>
   );
 }
@@ -80,6 +79,7 @@ function validationSchema() {
 
 const styles = StyleSheet.create({
   container: {
+    marginTop: 150,
     paddingHorizontal: 20,
   },
   title: {
@@ -90,7 +90,7 @@ const styles = StyleSheet.create({
     marginBottom: 15,
   },
   input: {
-    height: 40,
+    height: 35,
     margin: 12,
     borderWidth: 1,
     padding: 10,
@@ -99,9 +99,14 @@ const styles = StyleSheet.create({
   buttonContainer: {
     backgroundColor: "#007AFF",
     marginHorizontal: 100,
-    borderWidth: 1,
-    borderColor: "#000",
     borderRadius: 3,
+    padding: 7,
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  buttonText: {
+    fontWeight: undefined,
+    color: "#fff",
   },
   errorMessages: {
     textAlign: "center",

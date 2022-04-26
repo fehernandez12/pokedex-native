@@ -1,11 +1,14 @@
-import { ScrollView } from "react-native";
+import { ScrollView, StyleSheet } from "react-native";
 import React, { useState, useEffect } from "react";
 import Icon from "react-native-vector-icons/FontAwesome5";
+import AppLoading from "expo-app-loading";
 import { Pokemon } from "pokenode-ts";
 import { PokemonService } from "../services/pokemon.service";
 import { Header } from "../components/Pokemon/Header";
 import { TypeList } from "../components/Pokemon/TypeList";
 import { Stats } from "../components/Pokemon/Stats";
+import { Favorite } from "../components/Pokemon/Favorite";
+import useAuth from "../hooks/useAuth";
 
 function PokemonScreen(props: any) {
   const {
@@ -15,6 +18,7 @@ function PokemonScreen(props: any) {
 
   const [pokemon, setPokemon] = useState<Pokemon>({} as Pokemon);
   const [loading, setLoading] = useState(false);
+  const { user } = useAuth();
 
   const getPokemon = async () => {
     try {
@@ -28,8 +32,19 @@ function PokemonScreen(props: any) {
   };
 
   useEffect(() => {
+    setLoading(true);
+    getPokemon();
+    setLoading(false);
+  }, []);
+
+  if (!pokemon) {
+    return null;
+  }
+
+  useEffect(() => {
     navigation.setOptions({
-      headerRight: () => null,
+      headerRight: () =>
+        user && pokemon ? <Favorite id={pokemon!.id} /> : undefined,
       headerLeft: () => (
         <Icon
           name="arrow-left"
@@ -40,17 +55,7 @@ function PokemonScreen(props: any) {
         />
       ),
     });
-  }, [navigation, params]);
-
-  useEffect(() => {
-    setLoading(true);
-    getPokemon();
-    setLoading(false);
-  }, []);
-
-  if (!pokemon) {
-    return null;
-  }
+  }, [navigation, params, pokemon, user]);
 
   return (
     <ScrollView>

@@ -1,7 +1,8 @@
-import { Text, StyleSheet, SafeAreaView } from "react-native";
+import { StyleSheet, SafeAreaView } from "react-native";
 import React from "react";
 import { PokemonType } from "pokenode-ts";
 import { getColorByType } from "../../../utils/getColorByType";
+import { AppText } from "../../AppText";
 
 function TypeList(props: any) {
   const getBadgeStyle = (type: string) => {
@@ -15,9 +16,9 @@ function TypeList(props: any) {
   return (
     <SafeAreaView style={styles.typesContainer}>
       {types.map((type: PokemonType) => (
-        <Text style={getBadgeStyle(type.type.name)} key={type.slot}>
+        <AppText style={getBadgeStyle(type.type.name)} key={type.slot}>
           {type.type.name}
-        </Text>
+        </AppText>
       ))}
     </SafeAreaView>
   );

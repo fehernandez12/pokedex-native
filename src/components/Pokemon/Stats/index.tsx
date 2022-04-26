@@ -1,7 +1,8 @@
-import { View, Text, StyleSheet } from "react-native";
+import { View, StyleSheet } from "react-native";
 import React from "react";
 import { PokemonStat } from "pokenode-ts";
 import { POKEMON_STATS } from "../../../utils/constants";
+import { AppText } from "../../AppText";
 
 function Stats(props: any) {
   const { stats } = props;
@@ -29,13 +30,13 @@ function Stats(props: any) {
   };
 
   const getBgColor = (stat: number) => {
-    if (stat <= 25) {
+    if (stat <= 28) {
       return "#ff3e3e";
-    } else if (stat > 25 && stat < 50) {
+    } else if (stat > 28 && stat < 35) {
       return "#f08700";
-    } else if (stat >= 50 && stat < 75) {
+    } else if (stat >= 35 && stat < 40) {
       return "#efca08";
-    } else if (stat >= 75) {
+    } else if (stat >= 40) {
       return "#6eeb83";
     } else {
       return "#000000";
@@ -48,14 +49,16 @@ function Stats(props: any) {
 
   return (
     <View style={styles.content}>
-      <Text style={styles.title}>Base stats</Text>
+      <AppText style={styles.title}>Base stats</AppText>
       {stats.map((stat: PokemonStat) => (
         <View style={styles.block} key={stat.stat.name}>
           <View style={styles.blockTitle}>
-            <Text style={styles.statName}>{POKEMON_STATS[stat.stat.name]}</Text>
+            <AppText style={styles.statName}>
+              {POKEMON_STATS[stat.stat.name]}
+            </AppText>
           </View>
           <View style={styles.blockInfo}>
-            <Text style={styles.number}>{stat.base_stat}</Text>
+            <AppText style={styles.number}>{stat.base_stat}</AppText>
             <View style={styles.barBg}>
               <View style={[styles.bar, barStyles(stat)]} />
             </View>
@@ -64,10 +67,10 @@ function Stats(props: any) {
       ))}
       <View style={styles.block}>
         <View style={styles.blockTitle}>
-          <Text style={styles.statName}>Total</Text>
+          <AppText style={styles.statName}>Total</AppText>
         </View>
         <View style={styles.blockInfo}>
-          <Text style={styles.number}>{getBaseStatTotal()}</Text>
+          <AppText style={styles.number}>{getBaseStatTotal()}</AppText>
           <View style={styles.barBg}>
             <View style={[styles.bar, totalBarStyles(getBaseStatTotal())]} />
           </View>

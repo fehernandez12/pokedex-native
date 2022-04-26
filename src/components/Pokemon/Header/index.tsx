@@ -1,6 +1,7 @@
 import React from "react";
-import { StyleSheet, View, SafeAreaView, Text, Image } from "react-native";
+import { StyleSheet, View, SafeAreaView, Image } from "react-native";
 import { getColorByType } from "../../../utils/getColorByType";
+import { AppText } from "../../AppText";
 
 function Header(props: any) {
   const { name, order, image, type } = props;
@@ -15,8 +16,8 @@ function Header(props: any) {
           <Image source={{ uri: image }} style={styles.image} />
         </View>
         <View style={styles.header}>
-          <Text style={styles.name}>{name}</Text>
-          <Text style={styles.order}>#{`${order}`.padStart(3, "0")}</Text>
+          <AppText style={styles.name}>{name}</AppText>
+          <AppText style={styles.order}>#{`${order}`.padStart(3, "0")}</AppText>
         </View>
       </SafeAreaView>
     </>

@@ -38,6 +38,7 @@ function PokemonList(props: any) {
 const styles = StyleSheet.create({
   flatListContainer: {
     paddingHorizontal: Platform.OS === "ios" ? 0 : 30,
+    marginTop: 50,
   },
   spinner: {
     marginTop: 20,
