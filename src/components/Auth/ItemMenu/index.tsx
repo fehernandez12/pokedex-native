@@ -6,23 +6,19 @@ function ItemMenu(props: any) {
   const { title, text } = props;
   return (
     <View style={styles.itemMenu}>
-      <AppText style={styles.title}>{title}:</AppText>
-      <AppText style={{ fontWeight: undefined }}>{text}</AppText>
+      <AppText bold={true}>{title}:</AppText>
+      <AppText>{text}</AppText>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
   itemMenu: {
-    fontWeight: undefined,
     flexDirection: "row",
     justifyContent: "space-between",
     paddingVertical: 20,
     borderBottomWidth: 1,
     borderBottomColor: "grey",
-  },
-  title: {
-    fontWeight: "bold",
   },
 });
 

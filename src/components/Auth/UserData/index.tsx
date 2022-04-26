@@ -27,8 +27,10 @@ function UserData() {
   return (
     <View style={styles.container}>
       <View style={styles.titleBlock}>
-        <AppText style={styles.title}>Bienvenido,</AppText>
-        <AppText style={styles.title}>{`${user!.firstName} ${
+        <AppText style={styles.title} bold={true}>
+          Bienvenido,
+        </AppText>
+        <AppText style={styles.title} bold={true}>{`${user!.firstName} ${
           user!.lastName
         }`}</AppText>
       </View>
@@ -61,14 +63,12 @@ const styles = StyleSheet.create({
     borderBottomWidth: 1,
   },
   title: {
-    fontWeight: "bold",
     fontSize: 22,
   },
   dataContent: {
     marginBottom: 20,
   },
   logoutBtn: {
-    fontWeight: undefined,
     backgroundColor: "#fc0057",
     marginHorizontal: 100,
     padding: 7,

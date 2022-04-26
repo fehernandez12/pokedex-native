@@ -9,14 +9,12 @@ import { Text } from "react-native";
 import { textStyles } from "../../utils/constants";
 
 function AppText(props: any) {
-  const { children, style } = props;
+  const { children, style, bold } = props;
 
   let [fontsLoaded] = useFonts({
     Nunito_400Regular,
     Nunito_700Bold,
   });
-
-  let bold = style && style["fontWeight"] && style["fontWeight"] === "bold";
 
   if (!fontsLoaded) {
     return <AppLoading />;

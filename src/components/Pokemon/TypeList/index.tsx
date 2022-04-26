@@ -1,4 +1,4 @@
-import { StyleSheet, SafeAreaView } from "react-native";
+import { StyleSheet, SafeAreaView, Platform } from "react-native";
 import React from "react";
 import { PokemonType } from "pokenode-ts";
 import { getColorByType } from "../../../utils/getColorByType";
@@ -26,6 +26,7 @@ function TypeList(props: any) {
 
 const styles = StyleSheet.create({
   typesContainer: {
+    marginTop: Platform.OS === "android" ? 15 : 0,
     flex: 1,
     flexDirection: "row",
     justifyContent: "center",

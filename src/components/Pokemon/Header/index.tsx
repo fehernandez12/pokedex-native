@@ -16,8 +16,12 @@ function Header(props: any) {
           <Image source={{ uri: image }} style={styles.image} />
         </View>
         <View style={styles.header}>
-          <AppText style={styles.name}>{name}</AppText>
-          <AppText style={styles.order}>#{`${order}`.padStart(3, "0")}</AppText>
+          <AppText style={styles.name} bold={true}>
+            {name}
+          </AppText>
+          <AppText style={styles.order} bold={true}>
+            #{`${order}`.padStart(3, "0")}
+          </AppText>
         </View>
       </SafeAreaView>
     </>
@@ -64,13 +68,11 @@ const styles = StyleSheet.create({
   name: {
     color: "#f1f2f3",
     fontSize: 30,
-    fontWeight: "bold",
     textTransform: "capitalize",
   },
   order: {
     color: "#eaebec",
     fontSize: 30,
-    fontWeight: "bold",
     textTransform: "capitalize",
   },
 });

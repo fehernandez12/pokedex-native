@@ -49,7 +49,9 @@ function Stats(props: any) {
 
   return (
     <View style={styles.content}>
-      <AppText style={styles.title}>Base stats</AppText>
+      <AppText style={styles.title} bold={true}>
+        Base stats
+      </AppText>
       {stats.map((stat: PokemonStat) => (
         <View style={styles.block} key={stat.stat.name}>
           <View style={styles.blockTitle}>
@@ -58,7 +60,9 @@ function Stats(props: any) {
             </AppText>
           </View>
           <View style={styles.blockInfo}>
-            <AppText style={styles.number}>{stat.base_stat}</AppText>
+            <AppText style={styles.number} bold={true}>
+              {stat.base_stat}
+            </AppText>
             <View style={styles.barBg}>
               <View style={[styles.bar, barStyles(stat)]} />
             </View>
@@ -86,7 +90,6 @@ const styles = StyleSheet.create({
     marginTop: 40,
   },
   title: {
-    fontWeight: "bold",
     fontSize: 20,
     paddingBottom: 5,
   },

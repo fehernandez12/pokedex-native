@@ -5,7 +5,6 @@ import { FavoriteService } from "../services/favorites.service";
 import { PokemonService } from "../services/pokemon.service";
 import { PokemonList } from "../components/PokemonList";
 import useAuth from "../hooks/useAuth";
-import { AppText } from "../components/AppText";
 import { NotLogged } from "../components/NotLogged";
 
 function FavList() {

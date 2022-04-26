@@ -32,7 +32,9 @@ function LoginForm() {
 
   return (
     <View style={styles.container}>
-      <AppText style={styles.title}>Iniciar sesión</AppText>
+      <AppText style={styles.title} bold={true}>
+        Iniciar sesión
+      </AppText>
       <AppTextInput
         placeholder="Nombre de usuario"
         style={styles.input}
@@ -85,7 +87,6 @@ const styles = StyleSheet.create({
   title: {
     textAlign: "center",
     fontSize: 28,
-    fontWeight: "bold",
     marginTop: 100,
     marginBottom: 15,
   },

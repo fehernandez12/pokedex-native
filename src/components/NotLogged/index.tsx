@@ -9,7 +9,9 @@ function NotLogged() {
 
   return (
     <SafeAreaView style={styles.container}>
-      <AppText style={styles.title}>¡No has iniciado sesión!</AppText>
+      <AppText style={styles.title} bold={true}>
+        ¡No has iniciado sesión!
+      </AppText>
       <AppButton onPress={() => navigation.navigate("Account", {})}>
         <AppText style={styles.text}>
           Inicia sesión para ver tus favoritos.
@@ -27,7 +29,6 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: 22,
-    fontWeight: "bold",
   },
   text: {
     fontSize: 18,

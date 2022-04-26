@@ -1,13 +1,9 @@
-import {
-  StyleSheet,
-  View,
-  Image,
-  TouchableWithoutFeedback,
-} from "react-native";
+import { StyleSheet, View, TouchableWithoutFeedback } from "react-native";
 import React from "react";
 import { useNavigation } from "@react-navigation/native";
 import { getColorByType } from "../utils/getColorByType";
 import { AppText } from "./AppText";
+import { AppImage } from "./AppImage";
 
 function PokemonCard(props: any) {
   const { pokemon } = props;
@@ -27,11 +23,18 @@ function PokemonCard(props: any) {
       <View style={styles.card}>
         <View style={styles.spacing}>
           <View style={bgStyles}>
-            <AppText style={styles.name}>{pokemon.name}</AppText>
-            <AppText style={styles.number}>
+            <AppText style={styles.name} bold={true}>
+              {pokemon.name}
+            </AppText>
+            <AppText style={styles.number} bold={true}>
               #{`${pokemon.id}`.padStart(3, "0")}
             </AppText>
-            <Image source={{ uri: pokemon.image }} style={styles.image} />
+            <AppImage
+              source={{ uri: pokemon.image }}
+              style={styles.image}
+              shadow={true}
+              containerStyles={bgStyles}
+            />
           </View>
         </View>
       </View>
@@ -46,7 +49,7 @@ const styles = StyleSheet.create({
   },
   spacing: {
     flex: 1,
-    padding: 10,
+    padding: 7,
   },
   bgStyles: {
     flex: 1,
@@ -66,10 +69,10 @@ const styles = StyleSheet.create({
     },
     shadowOpacity: 0.75,
     shadowRadius: 3.84,
+    backgroundColor: "transparent",
   },
   name: {
     color: "#fff",
-    fontWeight: "bold",
     fontSize: 15,
     paddingTop: 10,
     textTransform: "capitalize",
